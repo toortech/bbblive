@@ -15,23 +15,26 @@
       window.location.href = 'index.html';
     }
   </script>
-  <h1>Photo Gallery</h1>
-  <div id="gallery" class="gallery">
-    <!-- Thumbnails -->
-    <img src="assets/img/photo1.jpg" alt="Photo 1" class="thumb" />
-    <img src="assets/img/photo2.jpg" alt="Photo 2" class="thumb" />
-    <img src="assets/img/photo3.jpg" alt="Photo 3" class="thumb" />
+  <div class="container">
+    <h1>Photo Gallery</h1>
+    <div class="nav-boxes" id="gallery">
+      <img src="assets/img/photo1.jpg" alt="Photo 1" class="thumb" />
+      <img src="assets/img/photo2.jpg" alt="Photo 2" class="thumb" />
+      <img src="assets/img/photo3.jpg" alt="Photo 3" class="thumb" />
+    </div>
   </div>
-  <!-- Lightbox -->
   <div id="lightbox" class="lightbox" onclick="closeLightbox()">
     <img id="lightbox-img" />
   </div>
   <script>
-    document.querySelectorAll('.thumb').forEach(img => img.addEventListener('click', e => {
-      document.getElementById('lightbox-img').src = e.target.src;
-      document.getElementById('lightbox').style.display = 'flex';
-    }));
+    document.querySelectorAll('.thumb').forEach(img =>
+      img.addEventListener('click', e => {
+        document.getElementById('lightbox-img').src = e.target.src;
+        document.getElementById('lightbox').style.display = 'flex';
+      })
+    );
     function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
   </script>
+  <script src="js/main.js"></script>
 </body>
 </html>
