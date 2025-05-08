@@ -7,22 +7,38 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <h1>Stableford Scorecard</h1>
-  <div class="controls">
-    <label>Course:<select id="course-select"><option>Richings</option><option>Thorney</option></select></label>
-    <label>Tee:<select id="tee-select"><option value="128">White</option><option value="121">Yellow</option><option value="115">Red</option></select></label>
-    <label><input type="checkbox" value="Amrit">Amrit</label>
-    <label><input type="checkbox" value="Kam">Kam</label>
-    <label><input type="checkbox" value="Vish">Vish</label>
-    <label><input type="checkbox" value="Ravi">Ravi</label>
-    <label><input type="checkbox" value="Bal">Bal</label>
-    <label>Holes:<input type="radio" name="holes" value="18" checked>18<input type="radio" name="holes" value="9f">Front9<input type="radio" name="holes" value="9b">Back9</label>
-    <button id="build">Build</button>
+  <div class="container">
+    <h1>Stableford Scorecard</h1>
+    <div class="controls">
+      <label>Course:
+        <select id="course-select">
+          <option>Richings</option>
+          <option>Thorney</option>
+        </select>
+      </label>
+      <label>Tee:
+        <select id="tee-select">
+          <option value="128">White</option>
+          <option value="121">Yellow</option>
+          <option value="115">Red</option>
+        </select>
+      </label>
+      <label><input type="checkbox" value="Amrit">Amrit</label>
+      <label><input type="checkbox" value="Kam">Kam</label>
+      <label><input type="checkbox" value="Vish">Vish</label>
+      <label><input type="checkbox" value="Ravi">Ravi</label>
+      <label><input type="checkbox" value="Bal">Bal</label>
+      <label>Holes:
+        <input type="radio" name="holes" value="18" checked>18
+        <input type="radio" name="holes" value="9f">Front 9
+        <input type="radio" name="holes" value="9b">Back 9
+      </label>
+      <button id="build">Build</button>
+    </div>
+    <div id="created-time"></div>
+    <div id="table-container"></div>
   </div>
-  <div id="created-time"></div>
-  <div id="table-container"></div>
-  <script>
-    // (Insert full scorecard script from earlier here)
-  </script>
+  <script src="js/scorecard.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
