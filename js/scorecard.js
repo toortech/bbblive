@@ -1,4 +1,3 @@
-```js
 import courseData from '../assets/data/courses.json' assert { type: 'json' };
 
 function getSelectedPlayers() {
@@ -55,7 +54,7 @@ function buildScorecard() {
 
   const tfoot = document.createElement('tfoot');
   ['Front 9','Back 9','Overall'].forEach((lbl,ri) => {
-    let row = `<tr><td colspan="3">${lbl} Total</td>`;
+    let row = `<tr><td colspan=\"3\">${lbl} Total</td>`;
     players.forEach((_,pi) => { row += `<td id=\"str-${ri}-${pi}\"></td><td id=\"pts-${ri}-${pi}\"></td>`; });
     row += '</tr>';
     tfoot.innerHTML += row;
@@ -75,7 +74,7 @@ function buildScorecard() {
 
 function updateScorecard(par, siArr, slope, players, indices) {
   const totals = players.map(() => ({ fS:0, fP:0, bS:0, bP:0, oS:0, oP:0 }));
-  table = document.querySelector('table');
+  const table = document.querySelector('table');
   table.querySelectorAll('tbody tr').forEach((tr,idx) => {
     const h = indices[idx];
     const pr = par[h], front = idx < 9;
@@ -83,7 +82,7 @@ function updateScorecard(par, siArr, slope, players, indices) {
       const inp = tr.querySelector(`input[data-player=\"${pi}\"][data-hole=\"${h}\"]`);
       const sc = parseInt(inp.value,10) || 0;
       const ptsCell = tr.querySelector(`.pts-${pi}`);
-      if (!sc) { ptsCell.textContent=''; return; }
+      if (!sc) { ptsCell.textContent = ''; return; }
       const raw = parseInt(document.getElementById(`hcp-${pi}`).value,10) || 0;
       const adj = Math.round(raw * slope / 113);
       document.getElementById(`adjhcp-${pi}`).textContent = adj;
@@ -107,39 +106,3 @@ function updateScorecard(par, siArr, slope, players, indices) {
     });
   });
 }
-```
-
-With this complete implementation in **js/scorecard.js**, the Build Scorecard button will correctly render and calculate your Stableford table. Copy this into your `js/scorecard.js` file and let me know if it works!js
-import courseData from '../assets/data/courses.json' assert { type: 'json' };
-
-function getSelectedPlayers() {
-  return [...document.querySelectorAll('.controls input[type=checkbox]')]
-    .filter(cb => cb.checked)
-    .map(cb => cb.value)
-    .slice(0,4);
-}
-function getSelectedHoles() {
-  return document.querySelector('input[name=holes]:checked').value;
-}
-
-document.getElementById('build').addEventListener('click', buildScorecard);
-
-function buildScorecard() {
-  const courseKey = document.getElementById('course-select').value;
-  const { par, si } = courseData[courseKey];
-  const slope = parseInt(document.getElementById('tee-select').value,10);
-  const players = getSelectedPlayers();
-  if (!players.length) { alert('Select at least one player'); return; }
-  const holeOpt = getSelectedHoles();
-
-  // Clear and build table
-  const container = document.getElementById('table-container');
-  container.innerHTML = '';
-  // ... (table construction and event binding as before)
-  updateScorecard(par, si, slope, players, holeOpt);
-}
-
-function updateScorecard(par, siArr, slope, players, holeOpt) {
-  // Full update logic
-}
-``` 
