@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Photo Gallery</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <script>
+    // Simple password protection
+    const pwd = prompt('Enter gallery password:');
+    if (pwd !== 'letmein123') {
+      alert('Incorrect password');
+      window.location.href = 'index.html';
+    }
+  </script>
   <h1>Photo Gallery</h1>
-  <div id="gallery">
-    <!-- Images go here -->
+  <div id="gallery" class="gallery">
+    <!-- Thumbnails -->
+    <img src="assets/img/photo1.jpg" alt="Photo 1" class="thumb" />
+    <img src="assets/img/photo2.jpg" alt="Photo 2" class="thumb" />
+    <img src="assets/img/photo3.jpg" alt="Photo 3" class="thumb" />
   </div>
-  <script src="js/main.js"></script>
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" />
+  </div>
+  <script>
+    document.querySelectorAll('.thumb').forEach(img => img.addEventListener('click', e => {
+      document.getElementById('lightbox-img').src = e.target.src;
+      document.getElementById('lightbox').style.display = 'flex';
+    }));
+    function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
+  </script>
 </body>
 </html>
