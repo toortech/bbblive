@@ -7,26 +7,20 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <h1>
-    <img src="assets/img/handicap-icon.png" alt="Handicap icon" width="40" />
-    Handicap Calculator
-  </h1>
-  <div class="calc-controls">
-    <label>Gross Score: <input id="gross" type="number" min="0" /></label>
-    <label>Course Rating: <input id="rating" type="number" step="0.1" /></label>
-    <label>Slope Rating: <input id="slope" type="number" /></label>
-    <button id="calcBtn">Calculate</button>
+  <div class="container">
+    <h1>
+      <img src="assets/img/handicap-icon.png" alt="Handicap icon" width="40" />
+      Handicap Calculator
+    </h1>
+    <div class="calc-controls">
+      <label>Gross Score: <input id="gross" type="number" min="0" /></label>
+      <label>Course Rating: <input id="rating" type="number" step="0.1" /></label>
+      <label>Slope Rating: <input id="slope" type="number" /></label>
+      <button id="calcBtn">Calculate</button>
+    </div>
+    <div id="result" class="result"></div>
   </div>
-  <div id="result" class="result"></div>
-  <script>
-    document.getElementById('calcBtn').addEventListener('click', () => {
-      const gross = parseFloat(document.getElementById('gross').value);
-      const rating = parseFloat(document.getElementById('rating').value);
-      const slope = parseFloat(document.getElementById('slope').value);
-      if (isNaN(gross)||isNaN(rating)||isNaN(slope)) return alert('Please fill all fields');
-      const hcp = Math.round((gross - rating) * 113 / slope);
-      document.getElementById('result').textContent = `Your Course Handicap: ${hcp}`;
-    });
-  </script>
+  <script src="js/handicap.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
