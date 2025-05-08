@@ -1,10 +1,28 @@
 body {
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
   font-family: sans-serif;
   background: #007BFF;
   color: white;
 }
-h1 { text-align: center; margin: 1rem 0; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+h1, h2 {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.founded,
+.return-text {
+  text-align: center;
+  margin: 0.5rem 0;
+  font-style: italic;
+}
 
 .nav-boxes,
 .controls,
@@ -19,7 +37,7 @@ h1 { text-align: center; margin: 1rem 0; }
 .controls label,
 .calc-controls label,
 .calc-controls button {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   padding: 0.75rem;
   border-radius: 6px;
   text-align: center;
@@ -35,6 +53,19 @@ h1 { text-align: center; margin: 1rem 0; }
 
 #table-container {
   overflow-x: auto;
+}
+
+.main-image {
+  display: block;
+  margin: 1rem auto;
+  max-width: 600px;
+}
+
+@media (max-width: 768px) {
+  input[type="number"],
+  select {
+    width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
